@@ -1,19 +1,19 @@
-## General overview 
-we implement a chatbot capable of more than simply chat. 
+## General Overview 
+we implement a chatbot capable of chat and other tricks. 
 
 ## setup 
-* download and install ollama [docker image](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image)
+* Download and install Ollama [docker image](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image)
 
 * choose a model and pull it, they current code assums the LLM runs on  http://localhost:11434/ feel free to modify that. 
 
-* create python enviroment
-* installl requirments.txt
+* create python environment
+* install requirments.txt
 
 ## Architecture
-* LLM inference base class we have 
+* LLM inference base class. two implementations of the base class, one for function calling and one for chat.
 * NLP pipeline (with unit tests)
-* chatbot with logic 
-* server FLASK + usage example : gradio chat UI client 
+* chatbot with simple logic 
+* server FLASK + usage example : Gradio chat UI client 
 
 ## functionality 
 ### NLP pipeline
@@ -32,7 +32,7 @@ I implemented chat completion function and chat _streaming_ using litellm librar
 The chatbot however uses the NLP pipeline to prompt the answers, I included an example where if the detected user intent is search_document then it will add information about entites and dates to the prompt which will help the LLM to produce more accurate response. this is not optimal NLU but it simulates the process.
 
 ## Usage
-* run the Flask server using server.py don't forget to include SERVER_TOKEN in your enviroment for authentication. the endpoint chat accepts openai style input and returns a dictinary of response and meta data (NLP pipeline info)
+* run the Flask server using server.py don't forget to include SERVER_TOKEN in your enviroment for authentication. the endpoint chat accepts Openai style input and returns a dictionary of response and metadata (NLP pipeline info)
  
 * run chatbot UI using gradio : simply run client_local.py, it should open a chat interface in the browser.
 
